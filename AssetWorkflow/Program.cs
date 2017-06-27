@@ -12,7 +12,7 @@ namespace AssetWorkflow
         private static List<Asset> assetList = new List<Asset>();
         public static int counter = 1;
 
-        static void Main(string[] args)
+        static void Main()
         {
 
             int choice =0;
@@ -49,6 +49,7 @@ namespace AssetWorkflow
             AssetInformation assInfo = new AssetInformation(counter);
             counter++;
             assInfo.AssetName = "Asset " + assInfo.AssetID.ToString();
+
             Asset tempAsset = new Asset(assInfo);
             assetList.Add(tempAsset);
         }
@@ -76,13 +77,15 @@ namespace AssetWorkflow
         {
             int choice = 0;
 			WriteLine("Asset Manager v1");
-			do
+			
+            do
             {
 				WriteLine("Menu : (1) Create Asset  (2) Manage Asset (3) List Assets (4)Exit");
 
 				string ch = ReadLine();
                 Int32.TryParse(ch,out choice);
 		    } while (choice < 1 || choice > 4);
+
             return choice;
         }
 
@@ -101,6 +104,7 @@ namespace AssetWorkflow
             {
                 string choice = "X";
                 WriteLine("Asset Management");
+
                 do
                 {
                     WriteLine("Menu : (A) Test (B) Assign (C) Repair (D) Upgrade (E) Release (F) Transfer (G) Repaired (H) Discard (I) Lost (J) Found (K) Exit");
@@ -173,9 +177,11 @@ namespace AssetWorkflow
         {
             int id = counter;
             Console.WriteLine("Enter name : ");
+
             string name = Console.ReadLine();
             string email = name.Replace(" ", "") + "@email.com";
             counter++;
+
             return new Person(id, name, email);
         }
 
@@ -183,6 +189,7 @@ namespace AssetWorkflow
         {
             int id = 0;
             Int32.TryParse(assetID,out id);
+
             return assetList.Exists(i => i.AssetData.AssetID == id);
         }
     }
