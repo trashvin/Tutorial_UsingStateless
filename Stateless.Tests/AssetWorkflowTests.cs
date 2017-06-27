@@ -101,6 +101,11 @@ namespace Stateless.Tests
         [InlineData(Asset.State.New, Asset.Trigger.RequestRepair)]
         [InlineData(Asset.State.New, Asset.Trigger.RequestUpdate)]
         [InlineData(Asset.State.New, Asset.Trigger.Transferred)]
+        [InlineData(Asset.State.Unavailable, Asset.Trigger.Assigned)]
+        [InlineData(Asset.State.Unavailable, Asset.Trigger.Lost)]
+        [InlineData(Asset.State.Unavailable, Asset.Trigger.RequestRepair)]
+		[InlineData(Asset.State.Unavailable, Asset.Trigger.RequestUpdate)]
+		[InlineData(Asset.State.Unavailable, Asset.Trigger.Tested)]
         public void InvalidTriggerTest(Asset.State initialState, Asset.Trigger trigger)
         {
             LoadTestData();
